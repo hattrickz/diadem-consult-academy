@@ -7,14 +7,23 @@ import { services } from "@/lib/data";
 export default function FeaturedPrograms() {
   const featured = services.slice(0, 4);
   return (
-    <section className="section-padding bg-primary text-white">
-      <div className="section-container">
+    <section className="section-padding relative overflow-hidden bg-primary text-white">
+      <div
+        className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-secondary/30 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="section-container relative">
         <SectionHeading
+          variant="dark"
           eyebrow="Featured Programs"
           title="Popular Training Programs"
           description="Our most requested programs, trusted by hundreds of students each year."
         />
-        <div className="mt-1" />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((p, i) => {
             const Icon = p.icon;
@@ -26,11 +35,13 @@ export default function FeaturedPrograms() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -6 }}
-                className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm"
+                className="rounded-2xl border border-white/15 bg-white/[0.07] p-6 shadow-lg shadow-black/10 backdrop-blur-sm transition-colors hover:bg-white/[0.11]"
               >
-                <Icon className="text-accent" size={26} />
-                <h4 className="mt-4 font-bold">{p.title}</h4>
-                <p className="mt-2 text-sm text-white/70">{p.description}</p>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-text-primary">
+                  <Icon size={22} />
+                </div>
+                <h4 className="mt-4 font-heading font-bold text-white">{p.title}</h4>
+                <p className="mt-2 text-sm text-white/80">{p.description}</p>
               </motion.div>
             );
           })}

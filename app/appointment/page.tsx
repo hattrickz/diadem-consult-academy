@@ -36,14 +36,28 @@ export default function AppointmentPage() {
   };
 
   return (
-    <section className="pt-32 pb-20">
-      <div className="section-container max-w-2xl">
-        <SectionHeading
-          eyebrow="Book an Appointment"
-          title="Let's Plan Your Next Step"
-          description="Fill in the form below and one of our advisors will reach out to confirm your appointment."
+    <>
+      <section className="relative overflow-hidden bg-primary pb-16 pt-40 text-white">
+        <div
+          className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-secondary/30 blur-3xl"
+          aria-hidden="true"
         />
+        <div
+          className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-accent/10 blur-3xl"
+          aria-hidden="true"
+        />
+        <div className="section-container relative max-w-2xl">
+          <SectionHeading
+            variant="dark"
+            eyebrow="Book an Appointment"
+            title="Let's Plan Your Next Step"
+            description="Fill in the form below and one of our advisors will reach out to confirm your appointment."
+          />
+        </div>
+      </section>
 
+      <section className="section-padding pt-16">
+      <div className="section-container max-w-2xl">
         <AnimatePresence mode="wait">
           {status === "success" ? (
             <motion.div
@@ -69,14 +83,14 @@ export default function AppointmentPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               onSubmit={handleSubmit(onSubmit)}
-              className="mt-10 space-y-5 rounded-2xl bg-surface p-8"
+              className="mt-10 space-y-5 rounded-2xl border border-border bg-surface p-8 shadow-sm"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label className="mb-1.5 block text-sm font-semibold">Full Name</label>
                   <input
                     {...register("name")}
-                    className="w-full rounded-lg border border-border bg-white px-4 py-2.5 outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                    className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none transition focus:border-secondary focus:shadow-lg focus:shadow-secondary/10 focus:ring-4 focus:ring-secondary/10"
                   />
                   {errors.name && <p className="mt-1 text-xs text-danger">{errors.name.message}</p>}
                 </div>
@@ -84,7 +98,7 @@ export default function AppointmentPage() {
                   <label className="mb-1.5 block text-sm font-semibold">Phone</label>
                   <input
                     {...register("phone")}
-                    className="w-full rounded-lg border border-border bg-white px-4 py-2.5 outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                    className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none transition focus:border-secondary focus:shadow-lg focus:shadow-secondary/10 focus:ring-4 focus:ring-secondary/10"
                   />
                   {errors.phone && <p className="mt-1 text-xs text-danger">{errors.phone.message}</p>}
                 </div>
@@ -95,7 +109,7 @@ export default function AppointmentPage() {
                 <input
                   type="email"
                   {...register("email")}
-                  className="w-full rounded-lg border border-border bg-white px-4 py-2.5 outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                  className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none transition focus:border-secondary focus:shadow-lg focus:shadow-secondary/10 focus:ring-4 focus:ring-secondary/10"
                 />
                 {errors.email && <p className="mt-1 text-xs text-danger">{errors.email.message}</p>}
               </div>
@@ -106,7 +120,7 @@ export default function AppointmentPage() {
                   <input
                     type="date"
                     {...register("preferredDate")}
-                    className="w-full rounded-lg border border-border bg-white px-4 py-2.5 outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                    className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none transition focus:border-secondary focus:shadow-lg focus:shadow-secondary/10 focus:ring-4 focus:ring-secondary/10"
                   />
                   {errors.preferredDate && (
                     <p className="mt-1 text-xs text-danger">{errors.preferredDate.message}</p>
@@ -117,7 +131,7 @@ export default function AppointmentPage() {
                   <input
                     type="time"
                     {...register("preferredTime")}
-                    className="w-full rounded-lg border border-border bg-white px-4 py-2.5 outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                    className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none transition focus:border-secondary focus:shadow-lg focus:shadow-secondary/10 focus:ring-4 focus:ring-secondary/10"
                   />
                   {errors.preferredTime && (
                     <p className="mt-1 text-xs text-danger">{errors.preferredTime.message}</p>
@@ -129,7 +143,7 @@ export default function AppointmentPage() {
                 <label className="mb-1.5 block text-sm font-semibold">Service Interested In</label>
                 <select
                   {...register("serviceInterest")}
-                  className="w-full rounded-lg border border-border bg-white px-4 py-2.5 outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                  className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none transition focus:border-secondary focus:shadow-lg focus:shadow-secondary/10 focus:ring-4 focus:ring-secondary/10"
                   defaultValue=""
                 >
                   <option value="" disabled>
@@ -151,7 +165,7 @@ export default function AppointmentPage() {
                 <textarea
                   {...register("message")}
                   rows={4}
-                  className="w-full rounded-lg border border-border bg-white px-4 py-2.5 outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                  className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none transition focus:border-secondary focus:shadow-lg focus:shadow-secondary/10 focus:ring-4 focus:ring-secondary/10"
                 />
               </div>
 
@@ -162,7 +176,7 @@ export default function AppointmentPage() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-white transition hover:bg-secondary disabled:opacity-70"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3.5 font-semibold text-white shadow-lg shadow-primary/20 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30 disabled:opacity-70 disabled:hover:translate-y-0"
               >
                 {status === "loading" && <Loader2 className="animate-spin" size={18} />}
                 {status === "loading" ? "Sending..." : "Book Appointment"}
@@ -171,6 +185,7 @@ export default function AppointmentPage() {
           )}
         </AnimatePresence>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

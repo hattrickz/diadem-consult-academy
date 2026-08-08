@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Award } from "lucide-react";
 
 const points = [
   "Certified counsellors with years of experience",
@@ -21,9 +21,37 @@ export default function AboutPreview() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl"
+          className="relative"
         >
-          <Image src="/images/about/about-office.jpg" alt="Inside Diadem Consult Academy" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+          <div
+            className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-secondary/10 to-accent/10 blur-xl"
+            aria-hidden="true"
+          />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+            <Image
+              src="/images/about/about-office.jpg"
+              alt="Inside Diadem Consult Academy"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="absolute -bottom-6 -right-6 hidden items-center gap-3 rounded-2xl border border-border bg-white p-4 shadow-xl sm:flex"
+          >
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-text-primary">
+              <Award size={20} />
+            </div>
+            <div>
+              <p className="text-lg font-extrabold text-primary">8+ Years</p>
+              <p className="text-xs text-text-secondary">Of Excellence</p>
+            </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -32,7 +60,8 @@ export default function AboutPreview() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-secondary">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-secondary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-secondary">
+            <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
             About Us
           </span>
           <h2 className="text-3xl font-extrabold md:text-4xl">
@@ -53,7 +82,7 @@ export default function AboutPreview() {
           </ul>
           <Link
             href={"/about" as Route}
-            className="mt-8 inline-block rounded-full bg-primary px-7 py-3.5 font-semibold text-white transition hover:bg-secondary"
+            className="mt-8 inline-block rounded-full bg-primary px-7 py-3.5 font-semibold text-white shadow-md shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-secondary"
           >
             Learn More About Us
           </Link>

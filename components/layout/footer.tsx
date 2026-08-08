@@ -13,9 +13,17 @@ const quickLinks: { label: string; href: Route }[] = [
   { label: "Contact", href: "/contact" as Route },
 ];
 
+const socials = [
+  { icon: Facebook, label: "Facebook" },
+  { icon: Instagram, label: "Instagram" },
+  { icon: Twitter, label: "Twitter" },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white">
+    <footer className="relative bg-primary text-white">
+      <div className="h-[3px] bg-gradient-to-r from-secondary via-accent to-secondary" />
+
       <div className="section-container grid gap-10 py-16 md:grid-cols-4">
         <div>
           <Image src="/images/brand/logo-white.png" alt="Diadem Consult Academy" width={150} height={45} />
@@ -23,15 +31,22 @@ export default function Footer() {
             Trusted educational consulting and training institution helping students and
             professionals succeed.
           </p>
-          <div className="mt-5 flex gap-4">
-            <Facebook size={20} className="text-white/70 transition hover:text-accent" />
-            <Instagram size={20} className="text-white/70 transition hover:text-accent" />
-            <Twitter size={20} className="text-white/70 transition hover:text-accent" />
+          <div className="mt-5 flex gap-3">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href="#"
+                aria-label={s.label}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:border-accent hover:bg-accent hover:text-text-primary"
+              >
+                <s.icon size={16} />
+              </a>
+            ))}
           </div>
         </div>
 
         <div>
-          <h4 className="mb-4 font-semibold">Quick Links</h4>
+          <h4 className="mb-4 font-heading font-semibold">Quick Links</h4>
           <ul className="space-y-2 text-sm text-white/70">
             {quickLinks.map((l) => (
               <li key={l.href}>
@@ -44,7 +59,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-4 font-semibold">Services</h4>
+          <h4 className="mb-4 font-heading font-semibold">Services</h4>
           <ul className="space-y-2 text-sm text-white/70">
             {services.slice(0, 5).map((s) => (
               <li key={s.slug}>{s.title}</li>
@@ -53,18 +68,18 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-4 font-semibold">Contact</h4>
+          <h4 className="mb-4 font-heading font-semibold">Contact</h4>
           <ul className="space-y-3 text-sm text-white/70">
             <li className="flex items-start gap-2">
-              <MapPin size={18} className="mt-0.5 shrink-0" />
+              <MapPin size={18} className="mt-0.5 shrink-0 text-accent" />
               <span>Agip Bus Stop, 10 Shiro St, Fadeyi, Lagos 100253, Lagos</span>
             </li>
             <li className="flex items-center gap-2">
-              <Phone size={18} className="shrink-0" />
+              <Phone size={18} className="shrink-0 text-accent" />
               <span>+234 800 000 0000</span>
             </li>
             <li className="flex items-center gap-2">
-              <Mail size={18} className="shrink-0" />
+              <Mail size={18} className="shrink-0 text-accent" />
               <span>info@diademconsultacademy.com</span>
             </li>
           </ul>

@@ -11,9 +11,12 @@ export const metadata: Metadata = {
 export default function TrainingProgramsPage() {
   return (
     <>
-      <section className="pt-32 pb-4">
-        <div className="section-container">
+      <section className="relative overflow-hidden bg-primary pb-16 pt-40 text-white">
+        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-secondary/30 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-accent/10 blur-3xl" aria-hidden="true" />
+        <div className="section-container relative">
           <SectionHeading
+            variant="dark"
             eyebrow="Training Programs"
             title="Structured Programs for Real Results"
             description="Every program is designed around clear outcomes, so you always know what you're working toward."

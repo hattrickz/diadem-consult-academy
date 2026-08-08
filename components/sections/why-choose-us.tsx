@@ -18,7 +18,7 @@ export default function WhyChooseUs() {
       <div className="section-container grid items-center gap-12 md:grid-cols-2">
         <div className="order-2 md:order-1">
           <SectionHeading eyebrow="Why Choose Us" title="A Partner Invested in Your Success" center={false} />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {reasons.map((r, i) => {
               const Icon = r.icon;
               return (
@@ -28,9 +28,13 @@ export default function WhyChooseUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
+                  whileHover={{ y: -4 }}
+                  className="rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-lg"
                 >
-                  <Icon className="text-accent" size={28} />
-                  <h4 className="mt-3 font-bold">{r.title}</h4>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <Icon size={20} />
+                  </div>
+                  <h4 className="mt-3 font-heading font-bold">{r.title}</h4>
                   <p className="mt-1 text-sm text-text-secondary">{r.description}</p>
                 </motion.div>
               );
@@ -43,9 +47,21 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="relative order-1 aspect-[4/3] overflow-hidden rounded-2xl shadow-xl md:order-2"
+          className="relative order-1 md:order-2"
         >
-          <Image src="/images/about/why-choose-us.jpg" alt="Why choose Diadem Consult Academy" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+          <div
+            className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-secondary/10 to-accent/10 blur-xl"
+            aria-hidden="true"
+          />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+            <Image
+              src="/images/about/why-choose-us.jpg"
+              alt="Why choose Diadem Consult Academy"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

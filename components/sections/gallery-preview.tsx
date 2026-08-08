@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
 import { motion } from "framer-motion";
+import { Expand } from "lucide-react";
 import SectionHeading from "@/components/shared/section-heading";
 import { galleryImages } from "@/lib/data";
 
@@ -30,13 +31,18 @@ export default function GalleryPreview() {
                 sizes="(min-width: 768px) 33vw, 50vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
+              <div className="absolute inset-0 flex items-center justify-center bg-primary/0 opacity-0 transition-all duration-300 group-hover:bg-primary/40 group-hover:opacity-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-primary">
+                  <Expand size={18} />
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
         <div className="mt-10 text-center">
           <Link
             href={"/gallery" as Route}
-            className="inline-block rounded-full border border-primary px-7 py-3 font-semibold text-primary transition hover:bg-primary hover:text-white"
+            className="inline-block rounded-full border border-primary px-7 py-3 font-semibold text-primary transition hover:-translate-y-0.5 hover:bg-primary hover:text-white"
           >
             View Full Gallery
           </Link>

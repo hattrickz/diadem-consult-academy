@@ -26,10 +26,13 @@ export default function ContactPreview() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="rounded-2xl bg-white p-6 text-center shadow-sm"
+                whileHover={{ y: -4 }}
+                className="rounded-2xl border border-border bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-lg"
               >
-                <Icon className="mx-auto text-primary" size={26} />
-                <p className="mt-3 text-sm font-semibold">{item.label}</p>
+                <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <Icon size={20} />
+                </div>
+                <p className="text-sm font-semibold">{item.label}</p>
                 <p className="mt-1 text-sm text-text-secondary">{item.value}</p>
               </motion.div>
             );

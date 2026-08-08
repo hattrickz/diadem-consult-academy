@@ -33,7 +33,7 @@ export default function Hero() {
           >
             <Link
               href={"/appointment" as Route}
-              className="rounded-full bg-accent px-7 py-3.5 font-semibold text-text-primary transition hover:brightness-95"
+              className="rounded-full bg-accent px-7 py-3.5 font-semibold text-text-primary shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:brightness-95"
             >
               Book an Appointment
             </Link>
